@@ -44,5 +44,24 @@ public class ProductService {
                 product.getImgUrL()
         ));
     }
+    public ProductDTO insert(ProductDTO dto) {
+        Product product = new Product();
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setPrice(dto.getPrice());
+        product.setImgUrL(dto.getImgUrL());
+
+        product = repository.save(product);
+
+        // Retorna o DTO com os dados salvos
+        return new ProductDTO(
+                product.getId(),
+                product.getName(),
+                product.getDescription(),
+                product.getPrice(),
+                product.getImgUrL()
+        );
+    }
 }
+
 
