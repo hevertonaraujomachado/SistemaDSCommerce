@@ -4,6 +4,7 @@ import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.entities.Product;
 import com.devsuperior.dscommerce.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,7 @@ public class ProductService {
                 product.getImgUrL()
         ));
     }
+    @Transactional
     public ProductDTO insert(ProductDTO dto) {
         Product product = new Product();
         product.setName(dto.getName());
@@ -62,6 +64,26 @@ public class ProductService {
                 product.getImgUrL()
         );
     }
+    @Transactional
+    public ProductDTO update(Long id, ProductDTO dto) {
+        Product product = repository.getReferenceById(id);
+
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setPrice(dto.getPrice());
+        product.setImgUrL(dto.getImgUrL());
+
+        product = repository.save(product);
+
+        return new ProductDTO(
+                product.getId(),
+                product.getName(),
+                product.getDescription(),
+                product.getPrice(),
+                product.getImgUrL()
+        );
+    }
 }
+
 
 
