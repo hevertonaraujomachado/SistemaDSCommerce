@@ -83,6 +83,10 @@ public class ProductService {
                 product.getImgUrL()
         );
     }
+    @Transactional
+   public void delete(Long id){
+        repository.deleteById(id);
+    }
 }
 
 
