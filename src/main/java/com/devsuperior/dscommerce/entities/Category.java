@@ -19,8 +19,7 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 
-    public Category(){
-
+    public Category() {
     }
 
     public Category(Long id, String name) {
@@ -49,15 +48,17 @@ public class Category {
     }
 
     @Override
-    public final boolean equals(Object o) {
-        if (!(o instanceof Category category)) return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
 
         return Objects.equals(id, category.id);
     }
 
     @Override
     public int hashCode() {
-        return 0;
+        return id != null ? id.hashCode() : 0;
     }
 }
-
