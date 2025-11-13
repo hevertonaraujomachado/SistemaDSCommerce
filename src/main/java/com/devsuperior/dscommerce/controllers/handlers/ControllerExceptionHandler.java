@@ -1,8 +1,6 @@
 package com.devsuperior.dscommerce.controllers.handlers;
 
-import com.devsuperior.dscommerce.dto.CustomError;
 import com.devsuperior.dscommerce.dto.CustomErrorDTO;
-import com.devsuperior.dscommerce.dto.ValidationError;
 import com.devsuperior.dscommerce.dto.ValidationErrorDTO;
 import com.devsuperior.dscommerce.services.exceptions.DatabaseException;
 import com.devsuperior.dscommerce.services.exceptions.ForbiddenException;
